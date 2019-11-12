@@ -1,0 +1,72 @@
+#red{height: auto;
+}
+    #logo{
+        width: 200px;
+        height: auto;
+ }
+    #ttlejardin{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        font-style: italic;
+ }
+ 
+    aside{background-color: grey}
+
+    table, tr, td, th { 
+        border: solid thin lightgrey;
+        border-collapse: collapse;
+        border-radius: 10px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+.visuel{
+    width: 150px;
+    height: auto;
+    border: solid thin lightgray;
+    border-radius: 10px;
+ }
+ .bleu{color: blue}
+      
+      #Brouettes{
+        width: 150px ;
+        height: auto;
+        border: solid thin lightgrey;
+        border-radius: 5px;}
+        .coordonee{
+            margin-left: 25%;
+            margin-right: 25%
+          }
+          .txtform{
+            margin-left:25%; 
+          }
+          label{
+            display: inline-block;
+            width: 100px;
+          }
+            input[type=text],input[type=email],input[type=date],input[type=number],select{
+              border-left: 70%;
+              width: 150px;
+              padding-left: 0px;
+              border-radius: 5px;
+          }
+          textarea{border-radius: 5px;
+           }
+          
+          input[type=submit],input[type=reset]{
+             border-radius: 10px;
+             border: solid thin red;
+
+          }
+          #okf{
+               margin-top: 1px;
+               margin-left:30%;
+               position: absolute;
+          }
+          fieldset{
+              border: 2px solid red;
+            border-radius: 10px;
+            
+            background-color: #A7C793;
+            font-family: 'Times New Roman', Times, serif;
+            
+          }
+          
+        
