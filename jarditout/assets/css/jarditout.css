@@ -10,24 +10,21 @@
   font-size: 30px;
   font-style: italic;
  } 
-aside{background-color: grey}
+aside{
+  background-color: rgb(201, 180, 180)
+}
 table, tr, td, th { 
   border: solid thin lightgrey;
   border-collapse: collapse;
   border-radius: 10px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ }
 .visuel{
   width: 150px;
   height: auto;
-  border: solid thin lightgray;
-  border-radius: 10px;
+  padding-left: 10px;
 }
-.bleu{color: blue}
-  #Brouettes{
-  width: 150px ;
-  height: auto;
-  border: solid thin lightgrey;
-  border-radius: 5px;}
+
 .coordonee{
   margin-left: 25%;
   margin-right: 25%
