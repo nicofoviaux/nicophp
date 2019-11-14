@@ -7,5 +7,5 @@
     <link rel="stylesheet" href="assets/css/jarditout.css">
     <title>acceuil jarditout</title>
 </head>
-<body>
+<body class="container-fluid">
 
