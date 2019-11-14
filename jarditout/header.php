@@ -1,6 +1,6 @@
 <header>
         <!--la cellule du haut "container fluid pour tt la page en bootstrap-->
-        <div><img src="assets/img/jarditou_logo.jpg" alt="logo jarditout" id="logo">
+        <div class="col"><img src="assets/img/jarditou_logo.jpg" alt="logo jarditout" id="logo">
             <p class=" float-right" id="ttlejardin">tout le jardin</p>
         </div>
         <!-- class foat-right ou center pour aligné le text-->
@@ -12,13 +12,13 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Accueil</a>
+                        <a class="nav-link" href="index.php">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="tableau.html">Tableau</a>
+                        <a class="nav-link" href="tableaux.php">Tableau</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="formulaire.html">Formulaire</a>
+                        <a class="nav-link" href="">Formulaire</a>
                     </li>
                 </ul>
             </div>
