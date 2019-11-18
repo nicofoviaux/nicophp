@@ -2,6 +2,10 @@
         <!--la cellule du haut "container fluid pour tt la page en bootstrap-->
         <div class="col"><img src="assets/img/jarditou_logo.jpg" alt="logo jarditout" id="logo">
             <p class=" float-right" id="ttlejardin">tout le jardin</p>
+            <div class="text-right">
+ <button type="button"  class=" btn btn-outline-primary waves-effect"><i class="far fa-user pr-2" aria-hidden="true"></i><a href="id.php"></a>connexion</button>           
+            </div>
+           
         </div>
         <!-- class foat-right ou center pour aligné le text-->
         <nav id="navbar" class="navbar navbar-expand-sm navbar-dark col" style="background-color: #19D053">
@@ -18,7 +22,7 @@
                         <a class="nav-link" href="tableaux.php">Tableau</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Formulaire</a>
+                        <a class="nav-link" href="id.php">Formulaire</a>
                     </li>
                 </ul>
             </div>
