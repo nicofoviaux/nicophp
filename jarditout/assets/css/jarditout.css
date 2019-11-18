@@ -36,7 +36,7 @@ label{
   display: inline-block;
   width: 100px;
 }
-input[type=text],input[type=email],input[type=date],input[type=number],select{
+input[type=password],input[type=text],input[type=email],input[type=date],input[type=number],select{
   border-left: 70%;
   width: 150px;
   padding-left: 0px;
