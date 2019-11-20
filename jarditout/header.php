@@ -3,7 +3,7 @@
         <div class="col"><img src="assets/img/jarditou_logo.jpg" alt="logo jarditout" id="logo">
             <p class=" float-right" id="ttlejardin">tout le jardin</p>
             <div class="text-right">
- <button type="button"  class=" btn btn-outline-primary waves-effect"><i class="far fa-user pr-2" aria-hidden="true"></i><a href="id.php"></a>connexion</button>           
+ <button type="button"  class=" btn btn-outline-primary waves-effect" onclick="self.location.href='id.php'"><i class="far fa-user pr-2" aria-hidden="true"></i><a href="id.php"></a>connexion</button>           
             </div>
            
         </div>
@@ -22,7 +22,7 @@
                         <a class="nav-link" href="tableaux.php">Tableau</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="id.php">Formulaire</a>
+                        <a class="nav-link" href="">Formulaire</a>
                     </li>
                 </ul>
             </div>
