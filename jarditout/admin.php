@@ -5,7 +5,7 @@ require('bdd.php');
 <header class="text-center">
     <h1><strong>Bienvenue Nicolas</strong></h1>
 </header>
-<form action="modif.php" methode="POST" class="form-singin ">
+<form action="modif.php" method="POST" class="form-singin ">
 <div class="text-center">
     <div>
 
@@ -15,10 +15,19 @@ require('bdd.php');
 <input type="number" id="id" name="id" >
 <label for="categorie">categorie</label>
 <input type="text" id="categorie" name="categorie">
+<label for="reference">reference</label>
+<select name="reference" id="reference"></select>
+<?php
+$requete="SELECT * FROM `categories` ORDER BY pro_id ASC";
+$result=$db->query($requete);
+foreach(($row=$result->fetch(PDO::FETCH_OBJ)){
+    echo "<option"
+}
+?>
 <label for="libelle">libellé</label>
 <input type="text" name="libelle" id="libelle">
 <label for="description">description</label>
-<textarea name="description" id="description" cols="40" rows="1"></textarea>
+<textarea name="description" id="description" cols="20" rows="1"></textarea>
 <div>
     <label for="prix">prix</label>
     <input type="number" name="prix" id="prix">
@@ -71,7 +80,7 @@ while($row=$result->fetch(PDO::FETCH_OBJ)){
     echo"<td>".$row->pro_id."</td>";
     echo"<td>".$row->pro_ref."</td>";
     echo"<td><a href=\"detailadmin.php?id=".$row->pro_id."\">".$row->pro_libelle."</a></td>";
-    echo"<td>".$row->pro_prix."</td>";
+    echo"<td>".$row->pro_prix."€</td>";
     echo "<td>".$row->pro_couleur."</td>";
     echo"<td>".$row->pro_d_ajout."</td>";
     echo"<td>".$row->pro_d_modif."</td>";
