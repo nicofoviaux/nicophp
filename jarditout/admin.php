@@ -3,9 +3,9 @@ require('head.php');
 require('bdd.php');
 ?>
 <header class="text-center">
-    <h1><strong>bienvenue Nicolas</strong></h1>
+    <h1><strong>Bienvenue Nicolas</strong></h1>
 </header>
-<form action="modif.php" methode="POST" class="form-singin "></form>
+<form action="modif.php" methode="POST" class="form-singin ">
 <div class="text-center">
     <div>
 
@@ -15,17 +15,28 @@ require('bdd.php');
 <input type="number" id="id" name="id" >
 <label for="categorie">categorie</label>
 <input type="text" id="categorie" name="categorie">
-<label for="prix">prix</label>
-<input type="number" name="prix" id="prix">
-<label for="couleur">couleur</label>
-<input type="text" name="couleur" id="couleur">
-<label for="bloque">Bloqué</label>
-<input type="radio" name="bloque" id="bloque" value="oui"><span>oui</span>
-<input type="radio" name="bloque" id="bloque" value="false" checked><span>non</span>
+<label for="libelle">libellé</label>
+<input type="text" name="libelle" id="libelle">
+<label for="description">description</label>
+<textarea name="description" id="description" cols="40" rows="1"></textarea>
 <div>
-    <button type="submit" name="ajout" >ajouté ce produit</button>
+    <label for="prix">prix</label>
+    <input type="number" name="prix" id="prix">
+    <label for="stock">stock</label>
+    <input type="number" name="stock" id="stock">
+    <label for="couleur">couleur</label>
+    <input type="text" name="couleur" id="couleur">
+    <label for="photo">Photo</label>
+    <input type="text" name="photo" id="photo">
+    <label for="bloque">Bloqué</label>
+    <input type="radio" name="bloque" id="bloque" value="oui"><span>oui</span>
+    <input type="radio" name="bloque" id="bloque" value="false" checked><span>non</span>
+</div>
+<div>
+    <input  type="submit" name="ajout" value="ajouté ce produit" >
 </div>
 </div>
+</form>
 
 <?php
 $db=connexionadmin("nikthekiller","PU5aqu962");//appel la fonction de connexion
