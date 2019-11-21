@@ -27,19 +27,19 @@ $result->closecursor();
 <label for="libelle">libellé</label>
 <input type="text" name="libelle" id="libelle" value=<?=$produit->pro_libelle?>>
 <label for="description">description</label>
-<textarea name="description" id="description" cols="20" rows="1" value=<?=$produit->pro_description?>></textarea>
+<textarea name="description" id="description" cols="20" rows="1" ><?=$produit->pro_description?></textarea>
 <div>
     <label for="prix">prix</label>
-    <input type="number" name="prix" id="prix" value>
+    <input type="number" name="prix" id="prix" value=<?=$produit->pro_prix?>>
     <label for="stock">stock</label>
-    <input type="number" name="stock" id="stock">
+    <input type="number" name="stock" id="stock" value=<?=$produit->pro_stock?>>
     <label for="couleur">couleur</label>
-    <input type="text" name="couleur" id="couleur">
+    <input type="text" name="couleur" id="couleur" value=<?=$produit->pro_couleur?>>
     <label for="photo">Photo</label>
-    <input type="text" name="photo" id="photo">
+    <input type="text" name="photo" id="photo" value=<?=$produit->pro_photo?>>
     <label for="bloque">Bloqué</label>
-    <input type="radio" name="bloque" id="bloque" value="oui"><span>oui</span>
-    <input type="radio" name="bloque" id="bloque" value="false" checked><span>non</span>
+    <input type="radio" name="bloque" id="bloque" value="1"><span>oui</span>
+    <input type="radio" name="bloque" id="bloque" value="null" checked><span>non</span>
 </div>
 <div>
     <input  type="submit" name="modif" value="modifié ce produit" >
