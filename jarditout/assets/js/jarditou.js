@@ -1,4 +1,6 @@
-var confirme=document.getElementById("suppr");
+
+//----------------------------------------------------------------------------------------------------------------------------------controle de l'administration
+var confirme = document.getElementById("suppr");
 confirme.addEventListener("click",confirmation);
 console.log(confirm);
 function confirmation(){
@@ -10,4 +12,5 @@ function confirmation(){
     }else{
         event.preventDefault();
     }
+
 }
