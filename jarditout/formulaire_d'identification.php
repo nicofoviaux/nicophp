@@ -1,6 +1,6 @@
 <div class="text-center identification">
 <form action="controle.php" method="POST" class="form-singin">
-    <img src="assets/img/jarditou_logo.jpg" alt="logo jarditout" class="mb-4 img-fluid" width="200">
+    <a href="index.php"><img src="assets/img/jarditou_logo.jpg" alt="logo jarditout" class="mb-4 img-fluid" width="200"></a>
     <h2>connexion</h2>
     <div>
         <label for="nom" class="sr-only">nom</label>
