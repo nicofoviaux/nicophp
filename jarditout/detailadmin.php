@@ -23,16 +23,14 @@ $result->closecursor();
 <label for="var"></label>
 <input type="hidden" name="var" id="var" <?php echo 'value="'.$pro_id.'"';?>>
 <label for="categorie">categorie</label>
-<input type="text" id="categorie" name="categorie">
-<label for="reference">reference</label>
-<input type="number" name="reference" id="reference">
+<input type="text" id="categorie" name="categorie" value=<?=$produit->pro_ref?>>
 <label for="libelle">libellé</label>
-<input type="text" name="libelle" id="libelle">
+<input type="text" name="libelle" id="libelle" value=<?=$produit->pro_libelle?>>
 <label for="description">description</label>
-<textarea name="description" id="description" cols="20" rows="1"></textarea>
+<textarea name="description" id="description" cols="20" rows="1" value=<?=$produit->pro_description?>></textarea>
 <div>
     <label for="prix">prix</label>
-    <input type="number" name="prix" id="prix">
+    <input type="number" name="prix" id="prix" value>
     <label for="stock">stock</label>
     <input type="number" name="stock" id="stock">
     <label for="couleur">couleur</label>

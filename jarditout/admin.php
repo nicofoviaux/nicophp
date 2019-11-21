@@ -8,7 +8,6 @@ require('bdd.php');
 <form action="modif.php" method="POST" class="form-singin ">
 <div class="text-center">
     <div>
-
         <img src="assets/img/jarditou_logo.jpg" alt="logo jarditout" class=" img-fluid" width="200">
     </div>
 <label for="id">id</label>
@@ -16,14 +15,18 @@ require('bdd.php');
 <label for="categorie">categorie</label>
 <input type="text" id="categorie" name="categorie">
 <label for="reference">reference</label>
-<select name="reference" id="reference"></select>
+<select name="reference" id="reference">
 <?php
-$requete="SELECT * FROM `categories` ORDER BY pro_id ASC";
-$result=$db->query($requete);
-foreach(($row=$result->fetch(PDO::FETCH_OBJ)){
-    echo "<option"
-}
+$db=connexionadmin("nikthekiller","PU5aqu962");
+$requeteB="SELECT * FROM `categories` ORDER BY cat_id ASC";
+$resultB=$db->query($requeteB);
+    while($rowB=$resultB->fetch(PDO::FETCH_OBJ)){
 ?>
+        <option value="<?= $rowB->cat_id?>"> <?=$rowB->cat_nom?></option>
+<?php 
+    }
+?>
+</select>
 <label for="libelle">libellé</label>
 <input type="text" name="libelle" id="libelle">
 <label for="description">description</label>
@@ -38,8 +41,8 @@ foreach(($row=$result->fetch(PDO::FETCH_OBJ)){
     <label for="photo">Photo</label>
     <input type="text" name="photo" id="photo">
     <label for="bloque">Bloqué</label>
-    <input type="radio" name="bloque" id="bloque" value="oui"><span>oui</span>
-    <input type="radio" name="bloque" id="bloque" value="false" checked><span>non</span>
+    <input type="radio" name="bloque" id="bloque" value="1"><span>oui</span>
+    <input type="radio" name="bloque" id="bloque" value="0" checked><span>non</span>
 </div>
 <div>
     <input  type="submit" name="ajout" value="ajouté ce produit" >
