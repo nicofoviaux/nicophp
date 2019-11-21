@@ -7,13 +7,13 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="mentions légales.html">mention légal</a>
+                        <a class="nav-link" href="mention_legal.php">mention légal</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="horaire.html">horaires</a>
+                        <a class="nav-link" href="horaire.php">horaires</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="plan.html">Plan du site</a>
+                        <a class="nav-link" href="plan.php">Plan du site</a>
                     </li>
                 </ul>
             </div>
