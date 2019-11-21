@@ -20,7 +20,7 @@ if(isset($_POST["ajout"])){
     $stock=intval($_POST["stock"]);
     $couleur=$_POST["couleur"];
     $photo=$_POST["photo"];
-    $bloque=$_POST["bloque"];
+    $bloque=intval($_POST["bloque"]);
     $date=date('Y-m-d');//prend la date d'aujourd'hui le "-" pour compatibilité sql
     $modif=null;
     var_dump($id,$reference,$categorie,$libelle,$descrip,$prix,$stock,$couleur,$photo,$date,$modif,$bloque);
@@ -42,12 +42,27 @@ if(isset($_POST["ajout"])){
 //----------------------------------------------------------------------------MAJ
 if(isset($_POST["modif"])){
     $id=intval($_POST["var"]);
- 
-
-
-    $modif=date('d/m/Y');
-
-    var_dump($id,$modif);
+    $sql2='SELECT * FROM `produits` WHERE pro_id='.$id;
+    $result=$db->query($sql2);
+    $donee=$result->fetchObject();
+//assignation des variables
+    $categorie=$_POST["categorie"];
+    $reference=$donee->pro_cat_id;
+    $libelle=$_POST["libelle"];
+    $descrip=$_POST["description"];
+    $prix=floatval($_POST["prix"]);
+    $stock=intval($_POST["stock"]);
+    $couleur=$_POST["couleur"];
+    $photo=$_POST["photo"];
+    $bloque=intval($_POST["bloque"]);
+    $date=$donee->pro_d_ajout;//va les cherche directement en bdd
+    $modif=date('Y-m-d H:i:s');
+    // requete
+    $Maj='UPDATE `produits` SET pro_id=?,pro_cat_id=?,pro_ref=?,pro_libelle=?,pro_description=?,pro_prix=?,pro_stock=?,pro_couleur=?,pro_photo=?,pro_d_ajout=?,pro_d_modif=?,pro_bloque=? WHERE `produits`.`pro_id` = '.$id;
+    $q = $db->prepare($Maj);
+    $q->execute(array($id,$reference,$categorie,$libelle,$descrip,$prix,$stock,$couleur,$photo,$date,$modif,$bloque)); 
+    var_dump($id,$reference,$categorie,$libelle,$descrip,$prix,$stock,$couleur,$photo,$date,$modif,$bloque);
+    header("location:admin.php");
 }
 //----------------------------------------------------------------------------SUPRESSION
 if(isset($_POST["supprime"])){
