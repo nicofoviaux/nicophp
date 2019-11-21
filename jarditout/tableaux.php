@@ -23,9 +23,7 @@ echo '<div class="table-responsive">
         <th scope="col"><b>Libellé</b></th>
         <th scope="col"><b>Prix</b></th>
         <th scope="col"><b>Couleur</b></th>
-        <th scope="col"><b>Ajout</b></th>
-        <th scope="col"><b>Modif</b></th>
-        <th scope="col"><b>Bloqué</b></th>
+
     </tr>
 </thead>';
 while($row=$result->fetch(PDO::FETCH_OBJ)){
@@ -36,9 +34,6 @@ while($row=$result->fetch(PDO::FETCH_OBJ)){
     echo"<td><a href=\"detail.php?id=".$row->pro_id."\">".$row->pro_libelle."</a></td>";
     echo"<td>".$row->pro_prix."</td>";
     echo "<td>".$row->pro_couleur."</td>";
-    echo"<td>".$row->pro_d_ajout."</td>";
-    echo"<td>".$row->pro_d_modif."</td>";
-    echo"<td>".$row->pro_bloque."</td>";
     echo"</tr>";
 }
 echo"</table>
