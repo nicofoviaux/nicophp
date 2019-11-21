@@ -8,7 +8,7 @@ require('bdd.php');
 <form action="modif.php" method="POST" class="form-singin ">
 <div class="text-center">
     <div>
-        <img src="assets/img/jarditou_logo.jpg" alt="logo jarditout" class=" img-fluid" width="200">
+        <a href="index.php"><img src="assets/img/jarditou_logo.jpg" alt="logo jarditout" class=" img-fluid" width="200" ></a>
     </div>
 <label for="id">id</label>
 <input type="number" id="id" name="id" >
