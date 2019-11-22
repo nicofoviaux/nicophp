@@ -6,7 +6,7 @@ require("head.php");
 
 <?php
 require("bdd.php");//inclusion de la db
-$db=connexionadmin("nikthekiller","PU5aqu962");
+$db=connexionBase();
 $pro_id=$_GET["id"];//recupere la variable via GET (url)
 $requete="select * from produits where pro_id=".$pro_id;
 $result=$db->query($requete);
