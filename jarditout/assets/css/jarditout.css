@@ -20,7 +20,7 @@ table, tr, td, th {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
  }
 .visuel{
-  width: 150px;
+  width: 200px;
   height: auto;
   padding-left: 10px;
 }
@@ -63,3 +63,6 @@ fieldset{
 .identification{
 margin-top:300px;
 }   
+.admin{
+  background-color:hsl(88, 34%, 62%);
+}
