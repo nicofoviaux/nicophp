@@ -13,7 +13,8 @@ if(!$result){
 if($result->rowCount()==0){
     die("la table est vide");
 }
-echo '<div class="table-responsive">
+?>
+<div class="table-responsive">
 <table class="table-bordered col">
  <thead>
     <tr>
@@ -25,19 +26,26 @@ echo '<div class="table-responsive">
         <th scope="col"><b>Couleur</b></th>
 
     </tr>
-</thead>';
-while($row=$result->fetch(PDO::FETCH_OBJ)){
-  echo"<tr>";
-    echo "<td scope='row'><img class='visuel img-thumbnail img-fluid rounded' src='assets/img/".$row->pro_id.'.'.$row->pro_photo."'></td>\n";
-    echo"<td>".$row->pro_id."</td>";
-    echo"<td>".$row->pro_ref."</td>";
-    echo"<td><a href=\"detail.php?id=".$row->pro_id."\">".$row->pro_libelle."</a></td>";
-    echo"<td>".$row->pro_prix."</td>";
-    echo "<td>".$row->pro_couleur."</td>";
-    echo"</tr>";
-}
-echo"</table>
-</div> ";
+</thead>
+<tbody>
+<?php
+while($row=$result->fetchObject()){
+    ?>
+ <tr>
+    <td scope='row'><img class='visuel img-thumbnail img-fluid rounded' src='assets/img/<?=$row->pro_id?>.<?=$row->pro_photo?>'></td>
+    <td><?=$row->pro_id?></td>
+    <td><?=$row->pro_ref?></td>
+    <td><a href="detail.php?id=<?=$row->pro_id?>"><?=$row->pro_libelle?></a></td>
+    <td><?=$row->pro_prix?>€</td>
+    <td><?=$row->pro_couleur?></td>
+    </tr>
+    <?php
+    }
+    ?>
+    </tbody>
+</table>
+</div>
+<?php
 include("footer.php");
 require("pied.php");
 ?>
