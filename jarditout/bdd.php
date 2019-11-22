@@ -1,7 +1,10 @@
 <?php
 function connexionBase(){
+    $database='nfoviaux';
+    $identifiant='nfoviaux';
+    $mdp='19120nf';
     try{
-        $db=new PDO('mysql:host=localhost;charset=utf8;dbname=jarditou','root', '"PU5aqu962"');
+        $db=new PDO('mysql:host=localhost;charset=utf8;dbname='.$database,$identifiant,$mdp);
         return $db;
     }catch(exeption $e){
         echo "Erreur: ".$e->getmessage()."</br>";
@@ -9,9 +12,9 @@ function connexionBase(){
         die("connexion au serveur impossible");
     }
 }
-function connexionadmin($identifiant,$motdepasse){
+function connexionadmin($identifiantadm,$motdepasse){
     try{
-        $db=new PDO('mysql:host=localhost;charset=utf8;dbname=jarditou',$identifiant,$motdepasse);
+        $db=new PDO('mysql:host=localhost;charset=utf8;dbname='.$database,$identifiantadm,$motdepasse);
         $connexion=true;
         return $db;
     }catch(exeption $e){
