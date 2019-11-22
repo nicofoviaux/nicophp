@@ -8,8 +8,8 @@ MODIFICATION DE LA BASE DE DONNEE AVEC LE SITE
 
 */ 
     require("bdd.php");
-    $db=connexionadmin("nikthekiller","PU5aqu962");
-//------------------------------------------------------------------------------------AJOUT
+    $db=connexionBase();
+//---------------------------------------------------------------------------------------------------AJOUT
 if(isset($_POST["ajout"])){
     $id=intval($_POST["id"]);// pour avoir la variable en int
     $categorie=$_POST["categorie"];
