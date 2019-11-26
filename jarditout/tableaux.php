@@ -14,38 +14,35 @@ if($result->rowCount()==0){
     die("la table est vide");
 }
 ?>
-<div class="table-responsive">
+<div class="col-12">
+    <div class="row">
+<aside class="container text center col-3 sm-8 pt-2 pb-2 ">[PROCHAINEMENT]</aside>
+<div class="table-responsive container col-xl-6 col-sm-8 pt-2 pb-2 ">
 <table class="table-bordered col">
- <thead>
-    <tr>
-        <th scope="col"><b>Photo</b></th>
-        <th scope="col"><b>ID</b></th>
-        <th scope="col"><b>Catégorie</b></th>
-        <th scope="col"><b>Libellé</b></th>
-        <th scope="col"><b>Prix</b></th>
-        <th scope="col"><b>Couleur</b></th>
-
-    </tr>
-</thead>
+    
 <tbody>
 <?php
 while($row=$result->fetchObject()){
     ?>
- <tr>
-    <td scope='row'><img class='visuel img-thumbnail img-fluid rounded' src='assets/img/<?=$row->pro_id?>.<?=$row->pro_photo?>'></td>
-    <td><?=$row->pro_id?></td>
-    <td><?=$row->pro_ref?></td>
-    <td><a href="detail.php?id=<?=$row->pro_id?>"><?=$row->pro_libelle?></a></td>
-    <td><?=$row->pro_prix?>€</td>
-    <td><?=$row->pro_couleur?></td>
+ <tr class="col-12">
+    <td scope='row'>
+    <div class="container text-center "><a href="detail.php?id=<?=$row->pro_id?>"><h3><b><?=$row->pro_libelle?></b></h3></a></div>
+    <div class="container col-5 float-left pl-2"><a href="detail.php?id=<?=$row->pro_id?>"><img class='visuel img-thumbnail img-fluid rounded' src='assets/img/<?=$row->pro_id?>.<?=$row->pro_photo?>'></a></div>
+    <div class="container"><h5><b><u>ref: </u></b><?=$row->pro_ref?></h5></div>
+    <div class="container col-4 float-right"><h3><b><u>Prix: </u></b></h3><br><h4><b><u><?=$row->pro_prix?>€</u></b></h4></div>
+    <div class="container col-3 pt-5"><h5><b><u>couleur: </u></b><?=$row->pro_couleur?></h5></div></td>
     </tr>
     <?php
     }
     ?>
     </tbody>
 </table>
-</div>
+</div><!--container-->
+<aside class="container text center col-3 sm-8 pt-2 pb-2">[PROCHAINEMENT]</aside>
+</div><!--row-->
+</div><!--col-->
 <?php
 include("footer.php");
 require("pied.php");
 ?>
+
