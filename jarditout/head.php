@@ -7,5 +7,5 @@
     <link rel="stylesheet" href="assets/css/jarditout.css">
     <title>jarditou</title>
 </head>
-<body class="container-fluid">
+<body class="container-fluid fond">
 
