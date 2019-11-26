@@ -29,8 +29,8 @@ while($row=$result->fetchObject()){
     <div class="container text-center "><a href="detail.php?id=<?=$row->pro_id?>"><h3><b><?=$row->pro_libelle?></b></h3></a></div>
     <div class="container col-5 float-left pl-2"><a href="detail.php?id=<?=$row->pro_id?>"><img class='visuel img-thumbnail img-fluid rounded' src='assets/img/<?=$row->pro_id?>.<?=$row->pro_photo?>'></a></div>
     <div class="container"><h5><b><u>ref: </u></b><?=$row->pro_ref?></h5></div>
-    <div class="container col-4 float-right"><h3><b><u>Prix: </u></b></h3><br><h4><b><u><?=$row->pro_prix?>€</u></b></h4></div>
-    <div class="container col-3 pt-5"><h5><b><u>couleur: </u></b><?=$row->pro_couleur?></h5></div></td>
+    <div class="container col-xl-5 col-sm-3 float-right"><h3><b><u>Prix: </u></b></h3><br><h4><b><u><?=$row->pro_prix?>€</u></b></h4></div>
+    <div class="container col-xl-3 col-sm-2 pt-5"><h5><b><u>couleur: </u></b><?=$row->pro_couleur?></h5></div></td>
     </tr>
     <?php
     }
