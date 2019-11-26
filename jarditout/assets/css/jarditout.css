@@ -1,3 +1,7 @@
+.fond{
+  background-image: linear-gradient(to right bottom, #def9f6, #c9e9e1, #b6d8cb, #a6c8b4, #98b79c, #8fac8f, #86a082, #7e9575, #768d70, #6e856a, #667e65, #5f765f);
+}
+
 #red{
   height: auto;
 }
@@ -14,7 +18,7 @@ aside{
   background-color: rgb(201, 180, 180)
 }
 table, tr, td, th { 
-  border: solid thin lightgrey;
+  border: solid 2px black;
   border-collapse: collapse;
   border-radius: 10px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -22,24 +26,9 @@ table, tr, td, th {
 .visuel{
   width: 200px;
   height: auto;
-  padding-left: 10px;
 }
 
-.coordonee{
-  margin-left: 25%;
-  margin-right: 25%
-}
-.txtform{
-  margin-left:25%; 
-}
-label{
-  display: inline-block;
-  width: 100px;
-}
 input[type=password],input[type=text],input[type=email],input[type=date],input[type=number],select{
-  border-left: 70%;
-  width: 150px;
-  padding-left: 0px;
   border-radius: 5px;
 }
 textarea{
@@ -49,20 +38,24 @@ input[type=submit],input[type=reset]{
   border-radius: 10px;
   border: solid thin red;
 }
-#okf{
-  margin-top: 1px;
-  margin-left:30%;
-  position: absolute;
-}
 fieldset{
   border: 2px solid red;
   border-radius: 10px;          
   background-color: #A7C793;
-  font-family: 'Times New Roman', Times, serif;           
+  font-family: 'Times New Roman', 'Times', 'serif';           
 }  
 .identification{
-margin-top:300px;
+margin-top:19%;
+margin-bottom: 19%;
 }   
 .admin{
-  background-color:hsl(88, 34%, 62%);
+  background-image: linear-gradient(to right top, #fbfdf5, #eef6e1, #dff0ce, #cdeabd, #b8e4ae, #a6dd9e, #93d68f, #7ecf80, #6bc469, #58ba52, #43af38, #2ba417);;
 }
+.formajout{
+  margin-top: 0px;
+  z-index: 10;
+}
+
+/*.pt-6 {
+  padding-top: 6rem !important;
+}*/
