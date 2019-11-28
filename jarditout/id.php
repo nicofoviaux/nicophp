@@ -1,4 +1,14 @@
 <?php
+/*
+-------------------------------------------FORMULAIRE D IDENTIFICATION--------------------------------------
+-> formulaire responsive
+-> demande le nom d'utilisateur et mot de passe
+->redirige vers un script de controle
+
+---------------------reste-------------------
+->controle anti injex 
+->/!\ SECURITE /!\
+*/
 require("head.php");
 ?>
 <div class="text-center identification  ">
@@ -8,11 +18,11 @@ require("head.php");
     <h2>connexion</h2>
     <div>
         <label for="nom" class="sr-only">nom</label>
-        <input name="identifiant" type="text" id="nom" placeholder="nom d'utilisateur" required>
+        <input class="fontAwesome" name="identifiant" type="text" id="nom" placeholder="&#xf007; nom d'utilisateur" required>
     </div>
     <div>
         <label for="mot_de_passe" class="sr-only">mot de passe</label>
-        <input  id="mot_de_passe" name="mot_de_passe" required type="password" placeholder="mot de passe">
+        <input class="fontAwesome"  id="mot_de_passe" name="mot_de_passe" required type="password" placeholder="&#xf084; mot de passe">
     </div>
 </br>
 <button class="btn btn-primary " type="submit" name="envoyer">connexion</button>
