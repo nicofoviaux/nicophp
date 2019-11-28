@@ -101,15 +101,16 @@ if(isset($_POST["modif"])){
     $q -> bindValue(":ajout",$date,PDO::PARAM_STR);
     $q -> bindValue(":modif",$modif,PDO::PARAM_STR);
     $q -> bindValue(":bloque",$bloque,PDO::PARAM_INT);
-    $q->execute(); 
-        }
-    if(!$q){
+    }
+    if($q->execute())
+    {
+        header("location:admin.php");
+        exit;
+    }else{
         $tableauErreur=$db->errorinfo();
         echo$tableauErreur[2];
         die("Erreur dans la requête");
         var_dump($id,$reference,$categorie,$libelle,$descrip,$prix,$stock,$couleur,$photo,$date,$modif,$bloque);
-    }else{
-        header("location:admin.php");
     }
 }
 //----------------------------------------------------------------------------SUPRESSION
