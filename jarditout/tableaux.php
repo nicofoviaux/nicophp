@@ -1,4 +1,19 @@
 <?php
+/*
+----------------------------PATRIE VISIBLE DU SITE---------------------
+
+->le logo du site redirige ver l'index
+-> navbar responsive
+->image de promotion
+->affiche le tableau des articles dans la base de donnée
+->image et titre clickable et redirige vers le detail de l'article
+
+------------reste-------
+-voir pour un menu "filtre" a gauche
+-voir pour "pub fictive" a droite
+- amelioration de l'estetique
+-....
+*/
 require("head.php");
 include("header.php");
 require('bdd.php');
