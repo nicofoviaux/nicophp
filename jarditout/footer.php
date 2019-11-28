@@ -1,3 +1,10 @@
+<?php
+/*
+------------------------FOOTER-------------------
+
+*/ 
+
+?>
 <footer>
         <nav id="navbar" class="navbar navbar-expand-sm navbar-dark col12" style="background-color: #19D053">
             <!--la navbar retrecit au niveau sm et pour changer la couleur de fond soit mette bg-"la couleur" sinon cree un style sur la bar-->
