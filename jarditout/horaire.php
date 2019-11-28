@@ -1,4 +1,8 @@
 <?php
+/*
+--------------------------------------------PAGE HORAIRE--------------------------------
+-> A FAIRE
+*/
 require("head.php");
 include("header.php");
 ?>
