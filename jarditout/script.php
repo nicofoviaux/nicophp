@@ -5,7 +5,9 @@
 -declaration de regex
 -recuperation de variable
 -verif si le formulaire et remplie
--
+--------------------a faire --------------------------
+-redirige vers un endroit
+-voir ou envoyé le message (adresse mail surment)
 */
 if(isset($_POST["envoyer"])){
     form();
