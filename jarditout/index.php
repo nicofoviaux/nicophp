@@ -1,4 +1,9 @@
 <?php 
+/*
+----------------------------PAGE D ACCEUIL -----------------------
+
+-> a faire en html / bootstrap...
+*/
 require("head.php");
 include("header.php");
 echo '<div class="row">
