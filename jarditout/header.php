@@ -1,3 +1,13 @@
+<?php
+/*
+-----------------------HEADER-----------------------------
+->logo et sloggan du site
+->navbar
+->promotion
+-> les 3 son des container bootstrap
+*/
+
+?>
 <header>
 <div class="col-12">
     <div class="row">
@@ -6,6 +16,7 @@
             <a href="index.php"><img src="assets/img/jarditou_logo.jpg" alt="logo jarditout" id="logo"></a>
             <p class=" float-right" id="ttlejardin">tout le jardin</p>
         </div>
+      
 <!-----------------------------------------------------NAVBAR-------------------------------------------------------------------------------->
     <div class="container col-12">
         <nav id="navbar" class="navbar navbar-expand-sm navbar-dark col" style="background-color: #19D053">
@@ -19,7 +30,8 @@
                 </ul>
             </div>
             <div class="text-right">
-                <button type="button"  class=" btn btn-outline-primary waves-effect" onclick="self.location.href='id.php'"><i class="far fa-user pr-2" aria-hidden="true"></i><a href="id.php"></a>connexion</button>           
+            <a href="id.php" class="btn btn-outline-dark"><i class="fas fa-user icon-large"></i></a>
+           
              </div>
         </nav>
     </div>
