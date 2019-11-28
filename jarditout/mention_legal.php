@@ -1,4 +1,8 @@
 <?php
+/*
+------------------------------ MENTION LEGAL -----------------------------
+-> a faire !!!!
+*/
 require("head.php");
 include("header.php");
 ?>
