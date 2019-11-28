@@ -1,4 +1,11 @@
 <?php
+/*
+------------------------------------FORMULAIRE DE CONTACT-----------------------------------------
+->demande les informations
+-> verif en js
+->verif en php
+-> interdit au -18ans
+*/
 require("head.php");
 include("header.php");
 ?>
