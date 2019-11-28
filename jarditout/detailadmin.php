@@ -1,4 +1,18 @@
 <?php
+/*
+-----------PAGE DE DETAIL ADMINISTRATEUR----------
+-> partie securisé par session 
+->afiche la description produit
+->formulaire de modif et de supression 
+
+----------reste a faire---------
+
+-amelioré le formulaire 
+-bouton de deconnection
+-...
+*/ 
+session_start();
+if (isset($_SESSION["connecte"]) && ($_SESSION["connecte"]) == 'nico'){
 require("head.php");
 ?>
 <h1><strong>description des produits</strong></h1>
@@ -12,11 +26,38 @@ $requete="select * from produits where pro_id=".$pro_id;
 $result=$db->query($requete);
 $produit=$result->fetch(PDO::FETCH_OBJ);
 $result->closecursor();
-    echo '<img src="assets/img/'.$produit->pro_id.'.'.$produit->pro_photo.'">'.'</br>';
-    echo '<h2>reference:</h2>'.$produit->pro_ref.'</br>'; 
-    echo '<h2>libelle:</h2>'. $produit->pro_libelle.'</br>';
-    echo '<h2>description:</h2>'.$produit->pro_description.'</br>';
-    echo '<h2>prix:</h2>'.$produit->pro_prix.'€</br>';?>
+?>
+<a href="index.php"  class="btn btn-outline-dark"><i class="fas fa-home"></i></a>
+<a href="admin.php"  class="btn btn-outline-dark"><i class="fas fa-chevron-left"></i></a>
+
+<div class="col-12">
+    <div class="row">
+        <div class="container col-xl-6 col-sm-8 pt-2 pb-2 container1">
+            <div class="col-12">
+                <div class="row">
+                    <div class="container text-center  ">
+                    <h1><b><u><?=$produit->pro_libelle?></u></b></h1>
+                    <div class="container text-center">
+                        <?=$produit->pro_ref?>
+                    </div>
+                    </div>
+                    <div class="container col-xl-4 col-sm-8 "><!--photo-->
+                    <a href="assets/img/<?=$produit->pro_id?>.<?=$produit->pro_photo?>"><img src="assets/img/<?=$produit->pro_id?>.<?=$produit->pro_photo?>" class="visuel img-thumbnail img-fluid rounded"></a> 
+                    </div>
+                    <div class="container prix  border text-center align-self-center col-xl-3 col-sm-3 justify-content-end"><!--prix + nomb en stock-->
+                        <h1><b><?=$produit->pro_prix?>€</b></h1>
+                        <h3><u>attention</u></h3><br><h5> stock : <br><u> <?=$produit->pro_stock?></u><br> exemplaires!</h5>
+                    </div>
+                    </div><!--row-->
+                    <div class="row">
+                        <div class="container text-center ml-2">
+                            <h2><b><u> description:</u></b></h2><?=$produit->pro_description?>     
+                        </div>
+                    </div><!--row-->
+            </div>
+        </div>
+    </div><!--row-->
+</div><!--col-->
 
 <form action="modif.php" method="POST" class="form-singin ">
 <div class="text-center">
@@ -56,4 +97,7 @@ $result->closecursor();
 
  <?php   
 require("pied.php");
+}else{
+    header('Location:id.php');
+}
 ?>
