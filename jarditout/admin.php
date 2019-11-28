@@ -1,9 +1,20 @@
 <?php
 /*
 PARTIE ADMINISTRATEUR 
+-> partie securisé par la session "nico"
 ->formulaire d'ajout
 ->tableau recapitulatif
+
+----------------------------------
+reste a faire
+- full bootstrap
+-bouton de deconnxion
+-
+-
+-
 */ 
+session_start();
+if (isset($_SESSION["connecte"]) && ($_SESSION["connecte"]) == 'nico'){
 require('head.php');
 require('bdd.php');
 ?>
@@ -12,23 +23,23 @@ require('bdd.php');
         <h1><strong>Bienvenue Nicolas</strong></h1>
         <!--fromulaire d'ajout -->
         <nav id="navbar" class="navbar navbar-expand-sm navbar-dark col">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    <form action="modif.php" method="POST" class="form-singin ">
-                        <div class="text-center">
-                            <a href="index.php"><img src="assets/img/jarditou_logo.jpg" alt="logo jarditout" class=" img-thumbnail img-fluid rounded" width="200" ></a>
-                            <!--ID -->
-                            <label for="id">id</label>
-                            <input type="number" id="id" name="id" >
-                            <!--CATEGORIE -->
-                            <label for="categorie">categorie</label>
-                            <input type="text" id="categorie" name="categorie">
-                            <!--REFERENCE -->
-                            <label for="reference">reference</label>
-                            <select name="reference" id="reference">
-                                <?php
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <form action="modif.php" method="POST" class="form-singin ">
+                    <div class="text-center">
+                        <a href="index.php"><img src="assets/img/jarditou_logo.jpg" alt="logo jarditout" class=" img-thumbnail img-fluid rounded" width="200" ></a>
+                        <!--ID -->
+                        <label for="id">id</label>
+                        <input type="number" id="id" name="id" >
+                        <!--CATEGORIE -->
+                        <label for="categorie">categorie</label>
+                        <input type="text" id="categorie" name="categorie">
+                        <!--REFERENCE -->
+                        <label for="reference">reference</label>
+                        <select name="reference" id="reference">
+                            <?php
                             $db=connexionBase();
                             $requeteB="SELECT * FROM `categories` ORDER BY cat_id ASC";
                             $resultB=$db->query($requeteB);
@@ -49,25 +60,26 @@ require('bdd.php');
                             <label for="prix">prix</label>
                             <input type="number" name="prix" id="prix">
                             <!--STOCK -->
-                        <label for="stock">stock</label>
-                        <input type="number" name="stock" id="stock">
-                        <!--COULEUR -->
-                        <label for="couleur">couleur</label>
-                        <input type="text" name="couleur" id="couleur">
-                        <!--FORMAT PHOTO -->
-                        <label for="photo">Photo</label>
-                        <input type="text" name="photo" id="photo">
-                        <!--BLOQUAGE -->
-                        <label for="bloque">Bloqué</label>
-                        <input type="radio" name="bloque" id="bloque" value="1"><span>oui</span>
-                        <input type="radio" name="bloque" id="bloque" value="0" checked><span>non</span>
-                        <div>
-                            <input  type="submit" name="ajout" value="ajouté ce produit" >
+                            <label for="stock">stock</label>
+                            <input type="number" name="stock" id="stock">
+                            <!--COULEUR -->
+                            <label for="couleur">couleur</label>
+                            <input type="text" name="couleur" id="couleur">
+                            <!--FORMAT PHOTO -->
+                            <label for="photo">Photo</label>
+                            <input type="text" name="photo" id="photo">
+                            <!--BLOQUAGE -->
+                            <label for="bloque">Bloqué</label>
+                            <input type="radio" name="bloque" id="bloque" value="1"><span>oui</span>
+                            <input type="radio" name="bloque" id="bloque" value="0" checked><span>non</span>
+                            <div>
+                                <input  type="submit" name="ajout" value="ajouté ce produit" >
+                                <a href="index.php"  class="btn btn-outline-dark"><i class="fas fa-home"></i></a>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div>
-    </nav>
+                    </form>
+                </div>
+            </nav>
     </header>
     <?php
     /* TABLEAU RECAPITULATIF
@@ -126,3 +138,12 @@ require('bdd.php');
     require('pied.php');
     ?>
 </div>
+<?php 
+}
+else 
+{
+    var_dump($_SESSION['connecte']);
+    header("Location:id.php");
+    exit;
+}
+?>
