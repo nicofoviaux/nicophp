@@ -1,6 +1,8 @@
+/*body*/
 .fond{
   background-image: linear-gradient(to right bottom, #def9f6, #c9e9e1, #b6d8cb, #a6c8b4, #98b79c, #8fac8f, #86a082, #7e9575, #768d70, #6e856a, #667e65, #5f765f);
 }
+/*header*/
 
 #red{
   height: auto;
@@ -17,7 +19,7 @@
 aside{
   background-color: rgb(201, 180, 180)
 }
-table, tr, td, th { 
+tr{ 
   border: solid 2px black;
   border-collapse: collapse;
   border-radius: 10px;
@@ -54,4 +56,14 @@ margin-bottom: 19%;
 .formajout{
   margin-top: 0px;
   z-index: 10;
+}
+.prix{
+  background-color: goldenrod;
+  border-radius: 2rem;
+}
+.container1{
+  background-color: rgb(182, 179, 179);
+}
+.fontAwesome {
+  font-family: Helvetica, 'FontAwesome', sans-serif;
 }
