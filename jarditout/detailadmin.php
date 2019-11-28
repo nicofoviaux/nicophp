@@ -27,8 +27,7 @@ $result=$db->query($requete);
 $produit=$result->fetch(PDO::FETCH_OBJ);
 $result->closecursor();
 ?>
-<a href="index.php"  class="btn btn-outline-dark"><i class="fas fa-home"></i></a>
-<a href="admin.php"  class="btn btn-outline-dark"><i class="fas fa-chevron-left"></i></a>
+<a href="admin.php" title="retour" class="btn btn-outline-dark"><i class="fas fa-chevron-left"></i></a>
 
 <div class="col-12">
     <div class="row">
