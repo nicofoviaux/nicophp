@@ -58,7 +58,7 @@ $result->closecursor();
     </div><!--row-->
 </div><!--col-->
 
-<form action="modif.php" method="POST" class="form-singin ">
+<form action="modif.php" method="POST"  class="form-singin ">
 <div class="text-center">
 <label for="var"></label>
 <input type="hidden" name="var" id="var" <?php echo 'value="'.$pro_id.'"';?>>
@@ -75,8 +75,6 @@ $result->closecursor();
     <input type="number" name="stock" id="stock" value=<?=$produit->pro_stock?>>
     <label for="couleur">couleur</label>
     <input type="text" name="couleur" id="couleur" value=<?=$produit->pro_couleur?>>
-    <label for="photo">Photo</label>
-    <input type="text" name="photo" id="photo" value=<?=$produit->pro_photo?>>
     <label for="bloque">Bloqué</label>
     <input type="radio" name="bloque" id="bloque" value="1"><span>oui</span>
     <input type="radio" name="bloque" id="bloque" value="null" checked><span>non</span>
@@ -89,8 +87,20 @@ $result->closecursor();
 <form action="modif.php" method="POST">
     <label for="variable"></label>
     <input type="hidden"  id= "variable" name="variable" <?php echo 'value="'.$pro_id.'"';?>>
-        <input type="submit" name="supprime" id="suppr" value="supprimé">
+    <input type="submit" name="supprime" id="suppr" value="supprimé">
 </form>
+<!---------------------------------------------------MODIF DE PHOTO------------------------------------------------------------------------------>
+<button type="button" id="btnmodif" class="btn btn-outline-dark"><i class="fa fa-camera fa-lg"></i> modifié</button>
+<!------------------------------------------------------------------------------------------------------------------------------------------------>   
+<div id="modif">
+<form action="modif.php" method="POST" enctype="multipart/form-data" >
+<label for="photo" class="sr-only">Photo</label>
+<input type="file" name="photoAj" id="photo" placeholder="photo">
+<label for="variable1"></label>
+<input type="hidden"  name="variable1" <?php echo 'value="'.$pro_id.'"';?>>
+<button type="submit" name="imgmodif" class="btn btn-outline-dark"><i class="fa fa-camera fa-lg"></i> modifié</button>
+</form>
+</div>
 </div>
 
 
