@@ -10,3 +10,11 @@ function confirmation(){
         event.preventDefault();
     } 
 }
+var span = document.getElementById("modif");
+var modifimg=document.getElementById("btnmodif");
+span.style.display= "none";
+modifimg.addEventListener("click",modif);
+function modif(){
+let  span = document.getElementById("modif");
+    span.style.display =" block";
+}
