@@ -16,34 +16,33 @@ MODIFICATION DE LA BASE DE DONNEE AVEC LE SITE
     require("bdd.php");
     $db=connexionBase();
     $filtrestock='/^[0-9]$/';
+    //---------------------------------------------------------------------------------------------------AJOUT
+    if(isset($_POST["ajout"])){
+        $id= (int) $_POST["id"];
+        $categorie=$_POST["categorie"];
+        $reference=(int) $_POST["reference"];
+        $libelle=$_POST["libelle"];
+        $descrip=$_POST["description"];
+        $prix=(float) $_POST["prix"]; // pour avoir la variable en decimal
+        $stock=$_POST["stock"];
+        if(!preg_match($filtrestock,$stock)){
+            echo "format incorrect </br>" ;
+        }else{
+            $stock = (int)$stock;
+        }
+        $couleur=$_POST["couleur"];
+        //-------------------------------------------------PHOTO
     $dossier='assets/img';
-//---------------------------------------------------------------------------------------------------AJOUT
-if(isset($_POST["ajout"])){
-    $id= (int) $_POST["id"];
-    $categorie=$_POST["categorie"];
-    $reference=(int) $_POST["reference"];
-    $libelle=$_POST["libelle"];
-    $descrip=$_POST["description"];
-    $prix=(float) $_POST["prix"]; // pour avoir la variable en decimal
-    $stock=$_POST["stock"];
-    if(!preg_match($filtrestock,$stock)){
-    echo "format incorrect </br>" ;
-    }else{
-        $stock = (int)$stock;
-    }
-    $couleur=$_POST["couleur"];
-    if (is_array($_FILES["fichier"]["error"]) && !empty($_FILES["fichier"]["error"])){ 
-      
-                    
-      
-    } 
     $aMimeType=array("image/gif", "image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/tiff");
     $finfo=finfo_open(FILEINFO_MIME_TYPE);
     $mimeType=finfo_file($finfo,$_FILES["photo"]["tmp_name"]);
-    var_dump($_FILES);
+    var_dump($_FILES['photo']['name']);
     if(in_array($mimeType,$aMimeType)){
         $extension= substr(strrchr($_FILES["photo"]["name"], "."), 1);
+        $photo=$extension;
+        var_dump($extension);
         move_uploaded_file($_FILES["photo"]["tmp_name"], $dossier.'/'.$id.'.'.$extension); 
+
     }else{
       echo"extension du fichie incorrect";
     }
@@ -83,7 +82,7 @@ if(isset($_POST["ajout"])){
         var_dump($id,$reference,$categorie,$libelle,$descrip,$prix,$stock,$couleur,$photo,$date,$modif,$bloque);
     }else{
 
-       // header("location:admin.php");
+        header("location:admin.php");
     }
      
     }
