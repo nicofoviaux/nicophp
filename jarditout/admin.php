@@ -30,7 +30,7 @@ require('bdd.php');
     <div class="row">
         <!--------------------------------------------FORMULAIRE---------------------------->
         <div class="container col-xl-2 col-sm-12 ">
-            <form action="modif.php" method="POST" enctype="miltipart/form-data" class="form-singin ">
+            <form action="modif.php" method="POST" enctype="multipart/form-data" class="form-singin ">
                 <div class="form-group">
                     <div>
                         <a href="index.php"><img src="assets/img/jarditou_logo.jpg" alt="logo jarditout" class=" img-thumbnail img-fluid rounded" width="200" ></a>
