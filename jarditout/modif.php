@@ -5,18 +5,21 @@ MODIFICATION DE LA BASE DE DONNEE AVEC LE SITE
 -requete d'ajout 1ere position
 -requete de MAJ 2nd position
 -requete de supression 3eme position
+-requete de modification de la photo 4em position
 
 ----------------------------test de securité-----------------------
 
 ->voir si les variables sont ok 
 ->testé le fichier image 
 ->enregistré la photo des assets/img/$pro_id.extension
+->pour la modif : supression de la photo en base de donnée 
+
 
 */ 
     require("bdd.php");
     $db=connexionBase();
     $filtrestock='/^[0-9]$/';
-    //---------------------------------------------------------------------------------------------------AJOUT
+    //---------------------------------------------------------------------------------------------------------------------------------------------------AJOUT
     if(isset($_POST["ajout"])){
         $id= (int) $_POST["id"];
         $categorie=$_POST["categorie"];
@@ -31,7 +34,7 @@ MODIFICATION DE LA BASE DE DONNEE AVEC LE SITE
             $stock = (int)$stock;
         }
         $couleur=$_POST["couleur"];
-        //-------------------------------------------------PHOTO
+        //---------------------------------------------------------------------------------------PHOTO
     $dossier='assets/img';
     $aMimeType=array("image/gif", "image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/tiff");
     $finfo=finfo_open(FILEINFO_MIME_TYPE);
@@ -86,7 +89,7 @@ MODIFICATION DE LA BASE DE DONNEE AVEC LE SITE
     }
      
     }
-//----------------------------------------------------------------------------MAJ
+//--------------------------------------------------------------------------------------------------------------------MAJ
 if(isset($_POST["modif"])){
     $id=(int) $_POST["var"];
     $sql2='SELECT * FROM `produits` WHERE pro_id='.$id;
@@ -105,7 +108,7 @@ if(isset($_POST["modif"])){
             $stock = (int)$stock;
         }
     $couleur=$_POST["couleur"];
-    $photo=$_POST["photo"];
+    $photo=$donee->pro_photo;
     $bloque=(int )$_POST["bloque"];
     $date=$donee->pro_d_ajout;//va les cherche directement en bdd
     $modif=date('Y-m-d H:i:s');
@@ -143,13 +146,55 @@ if(isset($_POST["modif"])){
         var_dump($id,$reference,$categorie,$libelle,$descrip,$prix,$stock,$couleur,$photo,$date,$modif,$bloque);
     }
 }
-//----------------------------------------------------------------------------SUPRESSION
+//---------------------------------------------------------------------------------------------------------------------SUPRESSION
 if(isset($_POST["supprime"])){
     $id=$_POST["variable"];
+    $sql2='SELECT * FROM `produits` WHERE pro_id='.$id;
+    $result=$db->query($sql2);
+    $donee=$result->fetchObject();
+    unlink("assets/img/".$donee->pro_id.".".$donee->pro_photo);
     $sql = " DELETE FROM `produits` WHERE `produits`.`pro_id` = ?";
     $q = $db->prepare($sql);
     $q->execute(array($id));
     header("location:admin.php");
+}
+//-----------------------------------------------------------------------------------------------------------------------------MODIF PHOTO
+if(isset($_POST["imgmodif"])){
+    $id=$_POST["variable1"];
+    $sql2='SELECT * FROM `produits` WHERE pro_id='.$id;
+    $result=$db->query($sql2);
+    $donee=$result->fetchObject();
+    unlink("assets/img/".$donee->pro_id.".".$donee->pro_photo);
+
+    $dossier='assets/img';
+    $aMimeType=array("image/gif", "image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/tiff");
+    $finfo=finfo_open(FILEINFO_MIME_TYPE);
+    $mimeType=finfo_file($finfo,$_FILES["photoAj"]["tmp_name"]);
+    var_dump($_FILES['photoAj']['name']);
+    if(in_array($mimeType,$aMimeType)){
+        $extension= substr(strrchr($_FILES["photoAj"]["name"], "."), 1);
+        $photo=$extension;
+        
+        move_uploaded_file($_FILES["photoAj"]["tmp_name"], $dossier.'/'.$id.'.'.$extension); 
+
+    }else{
+        echo"extension du fichie incorrect";
+    }
+
+    $Maj='UPDATE `produits` SET pro_photo=:photo WHERE `produits`.`pro_id` = '.$id;
+    $q = $db->prepare($Maj);
+    $q -> bindValue(":photo",$photo,PDO::PARAM_STR);
+    var_dump($q);
+    if($q->execute())
+{
+    header("location: detailadmin.php?id=".$id);
+}else{
+    $tableauErreur=$db->errorinfo();
+    echo$tableauErreur[2];
+    die("Erreur dans la requête");
+    var_dump($photo);
+}
+
 }
 
 ?>
