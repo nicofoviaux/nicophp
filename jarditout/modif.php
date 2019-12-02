@@ -44,7 +44,7 @@ MODIFICATION DE LA BASE DE DONNEE AVEC LE SITE
         $extension= substr(strrchr($_FILES["photo"]["name"], "."), 1);
         $photo=$extension;
         var_dump($extension);
-        move_uploaded_file($_FILES["photo"]["tmp_name"], $dossier.'/'.$id.'.'.$extension); 
+        move_uploaded_file($_FILES["photo"]["tmp_name"], $ddossier.'/'.$i.'.'.$extension); 
 
     }else{
       echo"extension du fichie incorrect";
