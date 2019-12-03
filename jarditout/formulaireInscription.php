@@ -40,6 +40,12 @@ break;
     case 6;
     $PhConf="&#xf071; Mot de Passe different";
 break;
+    case 7;
+    $PhId="&#xf071; l'identifiant existe déja";
+break;
+    case 8;
+    $PhEmail="&#xf071; l'email existe deja";
+break;
 }
 ?>
 <div class="col-12">
