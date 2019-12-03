@@ -10,6 +10,8 @@
 ->hache le mdp
 ->enregistre sur la base de donnée
 */
+require("bdd.php");
+$db=connexionBase();
 if(isset($_POST["FICheck"])){
 
 $nom=$_POST["nom"];
@@ -19,6 +21,11 @@ $email=$_POST["email"];
 $Mdp=$_POST["MDP"];
 $MdpVerif=$_POST["MDPconf"];
 $valid=0;
+$requete2='SELECT cli_id FROM clients WHERE cli_identifiant='.$identifiant;
+$result=$db->query($requete2);
+$donee=$result->fetchObject();
+var_dump($donne);
+
 //-------------------------------------------------REGEX----------------------------------------------------------------------
 $filtreNom='/^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœÉ]+(?:(?:\-| )?[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœÉ]+)*$/';
 $filtreEmail='/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i';
@@ -44,22 +51,53 @@ if((empty($nom))||(!preg_match($filtreNom,$nom))){
     var_dump($Mdp,$MdpVerif);
     header("Location:formulaireInscription.php?error=6");
     exit;
+}elseif($donee->cli_identifiant==$identifiant){
+    header("Location:formulaireInscription.php?error=7");
+}elseif($donee->cli_mail==$email){
+    header("Location:formulaireInscription.php?error=8");
 }else{
-//-----------------------------------SI TT OK----------------------
+//-----------------------------------SI TT OK--------------------------------------------------------------------
+//------------------------------------------haschage de MDP------------------------------------------------------
+$password= password_hash($Mdp, PASSWORD_DEFAULT);
+//------------------------------------------------------INSERTION BDD----------------------------------------------------
 
-
-
-
-
+$requete='INSERT INTO `clients` (`cli_identifiant`, `cli_nom`, `cli_prenom`, `cli_mail`, `cli_MDP`, `cli_adresse`, `cli_CP`, `cli_ville`, `cli_tel`) VALUES (:identifiant,:nom,:prenom,:mail,:MDP,null,null,null,null)';
+$q = $db->prepare($requete);
+    $q -> bindValue(":identifiant",$identifiant,PDO::PARAM_STR);
+    $q -> bindValue(":nom",$nom,PDO::PARAM_STR);
+    $q -> bindValue(":prenom",$prenom,PDO::PARAM_STR);
+    $q -> bindValue(":mail",$email,PDO::PARAM_STR);
+    $q -> bindValue(":MDP",$password,PDO::PARAM_STR);
+    $q->execute();  
+    if(!$q){   
+        die("une erreur c'est produite veuillez reesayez ulterieuremet");
+    }else{
+        require("head.php");
+        ?>
+        <div class="container">
+        <div class="text-center triste">
+        <h1><u>votre compte a bien etait enregistré</u></h1>
+        <i class="fas fa-check fa-9x"></i>
+        <br>
+        <hr>
+        <i class="fas fa-exclamation-triangle fa-2x "><h2><b><u>conservez votre Mot de Passe il ne pourra vous etre renvoyé </u></b></h2></i>
+        <hr>
+        <p>un mail vous a été envoyé sur votre messagerie personnelle</p>
+        </div>
+        </div>
+        <?php
+        require("pied.php");
+        //header("Refresh:10,id.php");
+    }
 }
 
-
 }
+//-----------------------------------------------------------ANNULATION------------------------------------
 if(isset($_POST["FICancel"])){
     require("head.php");
     ?>
     <div class="container">
-    <div class="text-center identification">
+    <div class="text-center triste">
     <h1><u>formulaire annulé</u></h1>
     <i class="fas fa-sad-tear fa-9x"></i>
     <p>vous allez etre rediriger vers l'acceuil </p>
