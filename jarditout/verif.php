@@ -23,7 +23,7 @@ $valid=0;
 $filtreNom='/^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœÉ]+(?:(?:\-| )?[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœÉ]+)*$/';
 $filtreEmail='/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i';
 $filtreId='/[[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœÉ]+[0-9]*/';
-$filtreMdp='/(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})/';
+$filtreMdp='/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).{8,}/';
 //-------------------------------------------VERIF-----------------------
 if((empty($nom))||(!preg_match($filtreNom,$nom))){
     header("Location:formulaireInscription.php?error=1");
@@ -41,6 +41,7 @@ if((empty($nom))||(!preg_match($filtreNom,$nom))){
     header("Location:formulaireInscription.php?error=5");
     exit;
 }elseif((empty($MdpVerif))||($Mdp!=$MdpVerif)){
+    var_dump($Mdp,$MdpVerif);
     header("Location:formulaireInscription.php?error=6");
     exit;
 }else{
@@ -53,6 +54,20 @@ if((empty($nom))||(!preg_match($filtreNom,$nom))){
 }
 
 
+}
+if(isset($_POST["FICancel"])){
+    require("head.php");
+    ?>
+    <div class="container">
+    <div class="text-center identification">
+    <h1><u>formulaire annulé</u></h1>
+    <i class="fas fa-sad-tear fa-9x"></i>
+    <p>vous allez etre rediriger vers l'acceuil </p>
+    </div>
+    </div>
+    <?php
+    require("pied.php");
+    header("Refresh:3,index.php");
 }
 
 
