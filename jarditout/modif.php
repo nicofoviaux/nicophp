@@ -21,7 +21,6 @@ MODIFICATION DE LA BASE DE DONNEE AVEC LE SITE
     $filtrestock='/^[0-9]$/';
     //---------------------------------------------------------------------------------------------------------------------------------------------------AJOUT
     if(isset($_POST["ajout"])){
-        $id= (int) $_POST["id"];
         $categorie=$_POST["categorie"];
         $reference=(int) $_POST["reference"];
         $libelle=$_POST["libelle"];
@@ -34,37 +33,17 @@ MODIFICATION DE LA BASE DE DONNEE AVEC LE SITE
             $stock = (int)$stock;
         }
         $couleur=$_POST["couleur"];
-        //---------------------------------------------------------------------------------------PHOTO
-    $dossier='assets/img';
-    $aMimeType=array("image/gif", "image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/tiff");
-    $finfo=finfo_open(FILEINFO_MIME_TYPE);
-    $mimeType=finfo_file($finfo,$_FILES["photo"]["tmp_name"]);
-    var_dump($_FILES['photo']['name']);
-    if(in_array($mimeType,$aMimeType)){
-        $extension= substr(strrchr($_FILES["photo"]["name"], "."), 1);
-        $photo=$extension;
-        var_dump($extension);
-        move_uploaded_file($_FILES["photo"]["tmp_name"], $ddossier.'/'.$i.'.'.$extension); 
-
-    }else{
-      echo"extension du fichie incorrect";
-    }
-
     $bloque=(int) $_POST["bloque"];
     $date=date('Y-m-d');//prend la date d'aujourd'hui le "-" pour compatibilité sql
     $modif=null;
-    var_dump($id);
     // securité en Cas d'oublie
-    if(empty($id)){ echo'id vide</br>';  
-    }elseif(empty($categorie)){echo 'categorie vide </br>';
+     if(empty($categorie)){echo 'categorie vide </br>';
     }elseif(empty($libelle)){echo 'libelle vide</br>';
     }elseif(empty($prix)){echo 'prix vide</br>';
-    }elseif(empty($photo)){echo 'photo vide</br>';}
-        else{
+    }else{
             //definition de la requète
-    $requete='INSERT INTO `produits` (`pro_id`, `pro_cat_id`, `pro_ref`, `pro_libelle`, `pro_description`, `pro_prix`, `pro_stock`, `pro_couleur`, `pro_photo`, `pro_d_ajout`, `pro_d_modif`, `pro_bloque`) VALUES (:id,:cat,:ref,:libelle,:descrip,:prix,:stock,:couleur,:photo,:ajout,:modif,:bloque)';
+    $requete='INSERT INTO `produits` ( `pro_cat_id`, `pro_ref`, `pro_libelle`, `pro_description`, `pro_prix`, `pro_stock`, `pro_couleur`, `pro_photo`, `pro_d_ajout`, `pro_d_modif`, `pro_bloque`) VALUES (:cat,:ref,:libelle,:descrip,:prix,:stock,:couleur,null,:ajout,:modif,:bloque)';
     $q = $db->prepare($requete);
-    $q -> bindValue(":id",$id,PDO::PARAM_INT);
     $q -> bindValue(":cat",$reference,PDO::PARAM_INT);
     $q -> bindValue(":ref",$categorie,PDO::PARAM_STR);
     $q -> bindValue(":libelle",$libelle,PDO::PARAM_STR);
@@ -72,23 +51,45 @@ MODIFICATION DE LA BASE DE DONNEE AVEC LE SITE
     $q -> bindValue(":prix",$prix,PDO::PARAM_INT);
     $q -> bindValue(":stock",$stock,PDO::PARAM_INT);
     $q -> bindValue(":couleur",$couleur,PDO::PARAM_STR);
-    $q -> bindValue(":photo",$photo,PDO::PARAM_STR);
     $q -> bindValue(":ajout",$date,PDO::PARAM_STR);
     $q -> bindValue(":modif",$modif,PDO::PARAM_STR);
     $q -> bindValue(":bloque",$bloque,PDO::PARAM_INT);
-    $q->execute();  
+    $q->execute(); 
+//---------------------------------------------------------------------------------------PHOTO
+    $id=$db->lastInsertId();
+        $dossier='assets/img';
+        $aMimeType=array("image/gif", "image/jpeg", "image/pjpeg", "image/png", "image/x-png", "image/tiff");
+        $finfo=finfo_open(FILEINFO_MIME_TYPE);
+        $mimeType=finfo_file($finfo,$_FILES["photo"]["tmp_name"]);
+        var_dump($_FILES['photo']['name']);
+        if(in_array($mimeType,$aMimeType)){
+            $extension= substr(strrchr($_FILES["photo"]["name"], "."), 1);
+            $photo=$extension;
+            var_dump($extension);
+            move_uploaded_file($_FILES["photo"]["tmp_name"], $dossier.'/'.$id.'.'.$extension); 
+    
+        }else{
+          echo"extension du fichie incorrect";
+        }
+          $Maj='UPDATE `produits` SET pro_photo=:photo WHERE `produits`.`pro_id` = '.$id;
+          $q = $db->prepare($Maj);
+          $q -> bindValue(":photo",$photo,PDO::PARAM_STR);
+          var_dump($q);
+        if($q->execute()){
+          header("location: admin.php");
+        }else{
+          $tableauErreur=$db->errorinfo();
+          echo$tableauErreur[2];
+          die("Erreur dans la requête");
+          var_dump($photo);
+        }
+        if(!$q){
+            $tableauErreur=$db->errorinfo();
+            echo$tableauErreur[2];
+            die("Erreur dans la requête"); 
+         }    
+    }   
 }
-    if(!$q){
-        $tableauErreur=$db->errorinfo();
-        echo$tableauErreur[2];
-        die("Erreur dans la requête");
-        var_dump($id,$reference,$categorie,$libelle,$descrip,$prix,$stock,$couleur,$photo,$date,$modif,$bloque);
-    }else{
-
-        header("location:admin.php");
-    }
-     
-    }
 //--------------------------------------------------------------------------------------------------------------------MAJ
 if(isset($_POST["modif"])){
     $id=(int) $_POST["var"];
