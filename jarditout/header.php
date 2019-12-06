@@ -31,6 +31,7 @@ $compte=isset($_GET["account"]);
                 </ul>
 <?php   
 if (isset($_SESSION["connecte"]) && ($_SESSION["connecte"]) == "client"){
+   // var_dump($_SESSION);
     
     ?>
 <ul class="nav navbar-nav ml-auto">
