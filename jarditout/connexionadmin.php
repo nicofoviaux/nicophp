@@ -2,9 +2,8 @@
 session_start();
 
 require('bdd.php');
-if(isset($_POST[""])){
+if(isset($_POST["envoyeradm"])){
     
-    $mail=$_POST["mail"];
     $identifiant=$_POST["identifiant"];
     $motdepasse=$_POST["mot_de_passe"];
 
@@ -17,6 +16,9 @@ if(isset($_POST[""])){
          var_dump($_SESSION);       
         header('Location:admin.php');
         exit; 
+      }else{
+
+        var_dump($identifiant);
       }
 
 }
