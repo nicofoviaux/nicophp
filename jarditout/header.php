@@ -6,7 +6,8 @@
 ->promotion
 -> les 3 son des container bootstrap
 */
-
+session_start();
+$compte=isset($_GET["account"]);
 ?>
 <header>
 <div class="col-12">
@@ -28,11 +29,35 @@
                     <li class="nav-item"><a class="nav-link" href="tableaux.php">Nos Produits</a></li>
                     <li class="nav-item"><a class="nav-link" href="formulaire.php">Contact</a></li>
                 </ul>
-            </div>
-            <div class="text-right">
+<?php   
+if (isset($_SESSION["connecte"]) && ($_SESSION["connecte"]) == "client"){
+    
+    ?>
+<ul class="nav navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle  " data-toggle="dropdown"><i class="fas fa-user"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a href="#" class="dropdown-item">Compte</a>
+                        <a href="#" class="dropdown-item">Commandes</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="deconnection.php"class="dropdown-item">Deconnexion</a>
+                    </div>
+                </li>
+            </ul>
+    </div>
+
+<?php
+
+}else{
+    
+    ?>         
+    <div class="ml-auto">
             <a href="id.php" class="btn btn-outline-dark"><i class="fas fa-user icon-large"></i></a>
+    </div>
+<?php
+}
+?>
            
-             </div>
         </nav>
     </div>
 <!-------------------------------------------------PROMOTION----------------------------------------------------------------------------------------->    
