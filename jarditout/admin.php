@@ -172,7 +172,7 @@ require('bdd.php');
 else 
 {
     var_dump($_SESSION['connecte']);
-    header("Location:id.php");
+    header("Location:id.php?error=0");
     exit;
 }
 ?>
