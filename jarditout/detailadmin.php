@@ -107,6 +107,6 @@ $result->closecursor();
  <?php   
 require("pied.php");
 }else{
-    header('Location:id.php');
+    header('Location:id.php?error=0');
 }
 ?>
