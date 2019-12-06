@@ -18,8 +18,6 @@ function connexionBase(){
     }
 }
 
-
-
 function connexionadmin($identifiantadm,$motdepasse){
 
     $database = "nfoviaux";
