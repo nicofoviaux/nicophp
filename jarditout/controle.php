@@ -26,7 +26,9 @@ if(isset($_POST["envoyer"])){
         exit;
     }elseif(password_verify($password,$donee->cli_MDP)){
         $_SESSION["connecte"]='client';
-        header("Location:index.php?account='".$identifiant."'");
+        $_SESSION["id"]=$donee->cli_id;
+        $_SESSION["identifiant"]=$donee->cli_identifiant;
+        header("Location:index.php");
         exit;
     }else{
         var_dump(password_verify($password,$donee->cli_MDP));
