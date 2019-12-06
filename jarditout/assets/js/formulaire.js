@@ -165,3 +165,4 @@ function accept() {
         conf.checked = true
     }
 }
+
