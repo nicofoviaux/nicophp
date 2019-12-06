@@ -53,33 +53,63 @@ break;
         <div class="container col-xl-8 col-sm-12">
         <h1 class="text-center"><br><u>Bienvenu sur Jarditou</u></h1>
         <p>veuillez remplir ce formulaire pour compléter votre inscription</p>
-            <form action="verif.php" method="POST" class="form-group">
+            <form action="verif.php" method="POST" class="form-group" id="formulaire">
                 <fieldset class=" container p-4 ">
-                <legend class="text-center col-xl-2 col-sm-4 ml-auto mr-auto ">Inscription</legend>
-                <div class='row form-group mr-auto ml-auto'>
-                    <label for="nom" ></label>
-                    <input type="text" name="nom" id="nom2" class="form-control text-center col-xl-5 col-sm-12  fontAwesome" placeholder="<?=$PhNom?>">
-                    <label for="prenom" ></label>
-                    <input type="text" name="prenom" id="prenom2" class="form-control text-center col-xl-5  col-sm-12 ml-auto fontAwesome" placeholder="<?=$PhPrenom?>">
-                    
-                </div>
-                <div class="row form-group mr-auto ml-auto">
-                    <label for="identifiant" ></label>
-                    <input type="text" name="identifiant" id="identifiant" class="form-control text-center col-xl-5 col-sm-12 fontAwesome"  placeholder="<?=$PhId?>" >
-                    <label for="email" ></label>
-                    <input type="email" name="email" id="email2" class="form-control text-center col-xl-5 col-sm-12 ml-auto fontAwesome"  placeholder="<?=$PhEmail?>">
-                </div>
-                <div class="row form-group mr-auto ml-auto"> 
-                    <label for="MDP" ></label>
-                    <input type="password" name="MDP" id="MDP" class="form-control text-center col-xl-5  col-sm-12 fontAwesome"  placeholder="<?=$PhMdp?>">
-                    <label for="MDPconf"></label>
-                    <input type="password" name="MDPconf" id="MDPconf" class="form-control text-center col-xl-5  col-sm-12 ml-auto fontAwesome"  placeholder="<?=$PhConf?>">
-                </div>
-                </br>
-                <div class="row form-group justify-content-around ">
-                <button type="submit" class="btn btn-success btn-lg " name="FICheck" ><i class="fas fa-check"></i> Valider</button>
-                <button type="cancel" class="btn btn-danger btn-lg " name="FICancel" ><i class="fas fa-times"></i> Annuler</button>
-                </div>
+                    <legend class="text-center col-xl-2 col-sm-4 ml-auto mr-auto ">Inscription</legend>
+                    <div class='row form-group mr-auto ml-auto'>
+                        <div class="container col-xl-6 col-sm-12">
+                        <div class="row" >
+                            <label for="nom" ></label>
+                            <i id="inom"></i><input type="text" name="nom" id="nom2" class="form-control col-8 mr-auto ml-auto text-center fontAwesome" placeholder="<?=$PhNom?>" required>
+                            <span id="idnom"></span>
+                        </div>
+                        </div>
+                        <div class="container col-xl-6 col-sm-12">
+                        <div class="row" >
+                            <label for="prenom" ></label>
+                            <i id="iprenom"></i><input type="text" name="prenom" id="prenom2" class="form-control mr-auto ml-auto  text-center col-8 fontAwesome" placeholder="<?=$PhPrenom?>" required>
+                            <span id="idprenom"></span>
+                        </div>
+                        </div>
+                    </div>
+<!-------------------------------------------------------------------------------------------------------->
+                    <div class='row form-group mr-auto ml-auto'>
+                        <div class="container col-xl-6 col-sm-12">
+                        <div class="row" >
+                        <label for="identifiant"></label>
+                            <i id="iiden"></i><input type="text" name="identifiant" id="identifiant" class="form-control col-8 mr-auto ml-auto  text-center fontAwesome"placeholder="<?=$PhId?>" required>
+                            <span id="ididen"></span>
+                        </div>
+                        </div>
+                        <div class="container col-xl-6 col-sm-12">
+                        <div class="row" >
+                            <label for="email" ></label>
+                            <i id="imail"></i><input type="email" name="email" id="email2" class="form-control text-center col-8 mr-auto ml-auto  fontAwesome" placeholder="<?=$PhEmail?>" required>
+                            <span id="idmail"></span>
+                        </div>
+                        </div>
+                    </div>
+                    <div class='row form-group mr-auto ml-auto'>
+                        <div class="container col-xl-6 col-sm-12">
+                        <div class="row" >
+                            <label for="MDP" ></label>
+                            <i id="iMDP"></i><input type="password" name="MDP" id="MDP"  class="form-control col-8 mr-auto ml-auto  text-center fontAwesome" placeholder="<?=$PhMdp?>" required>
+                            <span id="idMDP"></span>
+                        </div>
+                        </div>
+                        <div class="container col-xl-6 col-sm-12">
+                        <div class="row" >
+                            <label for="MDPconf" ></label>
+                            <i id="iconf"></i><input  type="password" name="MDPconf" id="MDPconf" class="form-control mr-auto ml-auto  text-center col-8 fontAwesome" placeholder="<?=$PhMdp?>" required>
+                            <span id="idconf"></span>
+                        </div>
+                        </div>
+                    </div>
+                    </br>
+                    <div class="row form-group justify-content-around ">
+                    <button type="submit" class="btn btn-success btn-lg " name="FICheck" ><i class="fas fa-check"></i> Valider</button>
+                    <button type="cancel" class="btn btn-danger btn-lg " name="FICancel" ><i class="fas fa-times"></i> Annuler</button>
+                    </div>
                 </fieldset>
             </form>
         </div><!--container-->
