@@ -21,11 +21,14 @@ $email=$_POST["email"];
 $Mdp=$_POST["MDP"];
 $MdpVerif=$_POST["MDPconf"];
 $valid=0;
-$requete2='SELECT cli_id FROM clients WHERE cli_identifiant='.$identifiant;
-$result=$db->query($requete2);
+//---------------------------------------------------------------------------------VERIF IDENTIFIANT----------------------------------------------------------------
+$requete='SELECT * FROM clients where cli_identifiant = "'.$identifiant.'"';
+$result=$db->query($requete);
 $donee=$result->fetchObject();
-var_dump($donne);
-
+//--------------------------------------------------------------------------------------VERIF MAIL--------------------------------------------------------------
+$requete2='SELECT * FROM clients where cli_mail= "'.$email.'"';
+$result2=$db->query($requete2);
+$donee2=$result2->fetchObject();
 //-------------------------------------------------REGEX----------------------------------------------------------------------
 $filtreNom='/^[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœÉ]+(?:(?:\-| )?[a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœÉ]+)*$/';
 $filtreEmail='/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i';
@@ -49,12 +52,14 @@ if((empty($nom))||(!preg_match($filtreNom,$nom))){
     exit;
 }elseif((empty($MdpVerif))||($Mdp!=$MdpVerif)){
     var_dump($Mdp,$MdpVerif);
-    header("Location:formulaireInscription.php?error=6");
+    //header("Location:formulaireInscription.php?error=6");
     exit;
-}elseif($donee->cli_identifiant==$identifiant){
-    header("Location:formulaireInscription.php?error=7");
-}elseif($donee->cli_mail==$email){
+}elseif($donee!=false){
+   header("Location:formulaireInscription.php?error=7");
+   exit;
+}elseif($donee2!=false){
     header("Location:formulaireInscription.php?error=8");
+    exit;
 }else{
 //-----------------------------------SI TT OK--------------------------------------------------------------------
 //------------------------------------------haschage de MDP------------------------------------------------------
@@ -87,7 +92,7 @@ $q = $db->prepare($requete);
         </div>
         <?php
         require("pied.php");
-        //header("Refresh:10,id.php");
+        header("Refresh:5,id.php?error=0");
     }
 }
 
