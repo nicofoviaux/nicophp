@@ -35,11 +35,7 @@ require('bdd.php');
                     <div>
                         <a href="index.php"><img src="assets/img/jarditou_logo.jpg" alt="logo jarditout" class=" img-thumbnail img-fluid rounded" width="200" ></a>
                     </div>
-                    <!--ID -->
-                    <div>
-                        <label for="id" class="sr-only">id</label>
-                        <input type="number" id="id" name="id" placeholder="Id" >
-                    </div>
+                    <br>
                     <!--CATEGORIE -->
                     <div>
                         <label for="categorie" class="sr-only">categorie</label>
